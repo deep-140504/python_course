@@ -118,7 +118,7 @@ def space_check(board, position):
 #Step 7: Write a function that checks if the board is full and returns a boolean value. True if full, False otherwise.
 
 def full_board_check(board):
-    for i in range (1, 11):
+    for i in range (1, 10):
         if board[i] == " ":
             return False
     else:
@@ -199,16 +199,17 @@ while again:
         currMark = player2Mark
 
     while game_on:
-        choice = player_choice(currPlayer)
-        space_available = space_check(test_board, choice)
         is_full = full_board_check(test_board)
-        if(full_board_check == True):
+        if(is_full == True):
+            print("the board is full")
             again = replay()
             if again:
                 test_board = intialize_board()
                 break
             else:
                 game_on = False
+        choice = player_choice(currPlayer)
+        space_available = space_check(test_board, choice)
                 
         while(not space_available):
             print(f"space {choice} already occupied")
